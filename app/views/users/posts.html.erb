@@ -1,0 +1,15 @@
+<b style="text-decoration-color: darkblue;text-decoration: firebrick;">User Posts for: <%=@user.email%></b>
+
+<table>
+  <tr style="background-color: bisque;">
+    <th>Post</th>
+    <th>Date</th>
+  </tr>
+  <% @user_posts.each do |post| %>
+     <tr style="background-color: palegreen;">
+       <td><%= post.content%></td>
+       <td><%= post.updated_at.strftime('%x %X')%></td>
+     </tr>
+  <% end %>
+</table>
+<p><%= link_to 'Back', users_path %></p>
