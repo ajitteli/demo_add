@@ -1,20 +1,19 @@
-<b style="text-decoration-color: darkblue;text-decoration: firebrick;">User Posts for: <%=@user.email%></b>
-<p><% if @user_posts.empty? %>
-   No posts are created by <%= @user.email %>
-   <% else %>
-<table>
-  <tr style="background-color: bisque;">
+<b>Posts by: <%= link_to @user.name, @user %></b>
+<% if @user_posts.empty? %>
+  No posts are created by <%= @user.name %>
+<% else %>
+<table class="table">
+  <tr>
     <th>Post</th>
     <th>Date</th>
   </tr>
   <% @user_posts.each do |post| %>
-     <tr style="background-color: palegreen;">
-       <td><%= post.content%></td>
-       <td><%= post.updated_at.strftime('%x %X')%></td>
-     </tr>
+  <tr>
+    <td><%= post.content%></td>
+    <td><%= post.updated_at.strftime('%x %X')%></td>
+  </tr>
   <% end %>
 </table>
-    <% end %>
-<p><%= link_to 'Create', new_micropost_path, :user_id => @user.id %>
-<%= link_to 'Back', users_path %></p>
-</p>
+<% end %>
+<%= link_to 'Create', new_micropost_path, :user_id => @user.id %>
+
