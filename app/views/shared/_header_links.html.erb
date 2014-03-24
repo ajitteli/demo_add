@@ -1,0 +1,9 @@
+<div class="nav-list">
+<div class="nav-pills pull-right">
+	<% if current_user %>
+	  <div class="pull-right badge"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></div>
+	  <div class="pull-right">Logged-in as <b class="badge"><%= current_user.email %></b>&nbsp;</div>
+	<% end %>
+</div>
+</div>
+

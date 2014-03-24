@@ -3,6 +3,7 @@
 <div class="container">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DemoApp</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
@@ -10,25 +11,29 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  	<h1><a href="#">My App</a></h1>
+    <div class="page-header">
+    <%= render :partial => '/shared/header_links' %>
+    <h2 class="h2"><a href="#">My App</a></h2>
+  </div>
   	<div class="navbar">
       <div class="navbar-inner">
-      <div class="container">
-      <ul class="nav">
-        <li><%= link_to 'Users', users_path %></li>
+      <ul class="nav nav-pills">
         <li><%= link_to 'Posts', microposts_path %></li>
         <li><a href="#">Services</a></li>
         <li><a href="#">Downloads</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
       </ul>
-      </div>
       </div>
     </div>
     <%= yield %>
 
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="bootstrap.js"></script>
+    <footer style="margin-bottom: 100%;">
+      <div class="container">
+        <p>
+          This website is created and maintained by <b>T Ajit</b>.
+        </p>
+      </div>
+    </footer>
+
   </body>
   </div>
 </html>

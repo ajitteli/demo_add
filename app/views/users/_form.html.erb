@@ -1,3 +1,4 @@
+<div class="row">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -11,15 +12,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+  <div class="row-fluid">
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
-  <div class="actions">
+  <div class="btn">
     <%= f.submit %>
   </div>
 <% end %>
+</div>

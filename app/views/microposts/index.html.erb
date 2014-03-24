@@ -1,11 +1,11 @@
 <div class="container">
-<h4><a href="”#”">Listing Posts</a></h4>
+  <b>New Post:</b>
+  <%= render 'form' %>
 <table class="table">
   <tr>
     <th>Content</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
+    <th>By</th>
+    <th>To</th>
     <th></th>
   </tr>
 
@@ -13,9 +13,9 @@
   <tr>
     <td><%= link_to micropost.content, micropost %></td>
     <td><%= link_to micropost.user.name, user_path(micropost.user) %></td>
+    <td><%= User.find(micropost.to_user).name %></td>
     <td><%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-<%= link_to 'New Post', new_micropost_path %>
 </div>

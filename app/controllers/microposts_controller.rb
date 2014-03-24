@@ -1,8 +1,9 @@
 class MicropostsController < ApplicationController
   # GET /microposts
   # GET /microposts.json
+  before_filter :authenticate_user!
   def index
-    @microposts = Micropost.all
+    @microposts = current_user.microposts.all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,25 +1,12 @@
-<%= form_for(@micropost) do |f| %>
-  <% if @micropost.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@micropost.errors.count, "error") %> prohibited this micropost from being saved:</h2>
-
-      <ul>
-      <% @micropost.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_field :content %>
-  </div>
-  <div class="field">
-    <%= f.label "User Name" %><br />
-    <%= f.select(:user_id, options_for_select(User.all.map{|u| [u.name,u.id]} )) %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Send" %>
-  </div>
+<%= form_for(:micropost) do |f| %>
+<table class="table">
+  <tr>
+    <td>To:</td>
+    <td><%= f.select(:to_user, options_for_select(User.all.map(&:name))) %></td>
+  </tr>
+  <tr>
+    <td class="span1"><%= f.label :content %></td>
+    <td class="span1"><%= f.text_field :content %></td>
+    <td><%= f.submit "Send" %></td>
+  </tr>
 <% end %>
