@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<div class="container">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +10,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+  <div class="container">
     <div class="page-header">
     <%= render :partial => '/shared/header_links' %>
     <h2 class="h2"><a href="#">My App</a></h2>
@@ -26,14 +26,12 @@
     </div>
     <%= yield %>
 
-    <footer style="margin-bottom: 100%;">
-      <div class="container">
+    <footer>
         <p>
           This website is created and maintained by <b>T Ajit</b>.
         </p>
-      </div>
     </footer>
 
-  </body>
   </div>
+  </body>
 </html>
