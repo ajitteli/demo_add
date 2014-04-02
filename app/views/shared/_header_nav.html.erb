@@ -1,0 +1,11 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+       <% ApplicationController::TABS.each_with_index do |t| %>
+    <ul class="nav">
+      <li><%= link_to t[:name].titleize, :controller => t[:controller] ? t[:controller] : t[:name] %></li>
+    </ul>
+  <% end %>
+</div>
+</div>
+</div>
