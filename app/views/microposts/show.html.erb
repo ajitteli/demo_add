@@ -1,15 +1,10 @@
+<div class="form-actions">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Content:</b>
-  <%= @micropost.content %>
-</p>
+<div class="form-inline">
+  <b>Content:</b> <%= @micropost.content %><br>
+  <b>Sent at:</b> <%= @micropost.created_at.strftime('%a %b %e %R %Y') %><br>
 
-<p>
-  <b>User:</b>
-  <%= @micropost.user.name %>
-</p>
-
-
-<%= link_to 'Edit', edit_micropost_path(@micropost) %> |
-<%= link_to 'Back', microposts_path %>
+  <%= link_to 'Back', microposts_path, class: "btn-link" %>
+</div>
+</div>

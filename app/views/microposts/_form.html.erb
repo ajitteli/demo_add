@@ -1,12 +1,7 @@
-<%= form_for(:micropost) do |f| %>
-<table class="table">
-  <tr>
-    <td>To:</td>
-    <td><%= f.select(:to_user, options_for_select(User.all.map(&:name))) %></td>
-  </tr>
-  <tr>
-    <td class="span1"><%= f.label :content %></td>
-    <td class="span1"><%= f.text_field :content %></td>
-    <td><%= f.submit "Send" %></td>
-  </tr>
+<%= form_for :micropost do |f| %>
+<div class="form-actions">
+  <div class="form-inline span3"><%= f.select(:to_user_id, options_for_select(all_other_users.collect{|u| [u.name,u.id]})) %></div>
+  <div class="form-inline span3"><%= f.text_area :content, cols: 20, rows: 1, :placeholder => "Enter Text" %></div>
+  <div class="form-inline span5"><%= f.submit "Send", :class => "btn-small" %></div>
+</div>
 <% end %>

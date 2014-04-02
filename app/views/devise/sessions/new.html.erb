@@ -1,7 +1,8 @@
 <div class="form-actions">
 <h4>Sign in</h4>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<table class="table-stripped">
+
+<table class="table">
   <tr>
     <td class="span2"><%= f.label :email %></td>
     <td><%= f.email_field :email, autofocus: true %></td>
@@ -10,16 +11,10 @@
     <td class="span2"><%= f.label :password %></td>
     <td><%= f.password_field :password, autocomplete: "off" %></td>
   </tr>
-
-  <% if devise_mapping.rememberable? -%>
   <tr>
-    <td class="span3"><%= f.check_box :remember_me %><%= f.label :remember_me %></td>
-  </tr>
-  <% end -%>
-  <tr>
-    <td class="btn"><%= f.submit "Sign in" %></td>
+    <td class="btn-small"><%= f.submit "Sign in" %></td><td></td>
   </tr>
 </table>
 <% end %>
-<div class="btn-link"><%= render "devise/shared/links" %></div>
+<%= render "devise/shared/links" %>
 </div>

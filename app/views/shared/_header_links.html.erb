@@ -1,7 +1,7 @@
 <% if current_user %>
 	  <div class="pull-right"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></div>
       <% if current_user.admin? %>
-        <div class="pull-right"><%= link_to "Admin","" %>&nbsp;</div>
+        <div class="pull-right"><%#= link_to "Admin","" %>&nbsp;</div>
       <% end %>
 	  <div class="pull-right"><b class="badge"><%= current_user.email %></b>&nbsp;</div>
 <% end %>

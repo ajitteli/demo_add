@@ -3,8 +3,8 @@ class MicropostsController < ApplicationController
   # GET /microposts.json
   before_filter :authenticate_user!
   def index
-    @microposts = current_user.microposts.all
-
+    @current_user = current_user
+    @microposts = @current_user.microposts
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @microposts }
@@ -15,7 +15,6 @@ class MicropostsController < ApplicationController
   # GET /microposts/1.json
   def show
     @micropost = Micropost.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @micropost }
@@ -41,14 +40,16 @@ class MicropostsController < ApplicationController
   # POST /microposts
   # POST /microposts.json
   def create
-    @micropost = Micropost.new(params[:micropost])
-
+    @micropost = current_user.microposts.new(params[:micropost])
+    debugger
     respond_to do |format|
       if @micropost.save
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
+        flash[:success] = 'Successfully sent'
+        format.html { redirect_to :controller => :microposts, notice: 'Micropost was successfully created.' }
         format.json { render json: @micropost, status: :created, location: @micropost }
       else
-        format.html { render action: "new" }
+        flash[:error] = 'Unable to send'
+        format.html { redirect_to :controller => :microposts, error: 'Unable to send'}
         format.json { render json: @micropost.errors, status: :unprocessable_entity }
       end
     end

@@ -7,29 +7,26 @@
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <link rel=”stylesheet” href="bootstrap.css"  type="text/css"/>
+    <link rel="shortcut icon" href="favicon.jpeg" />
     <%= csrf_meta_tags %>
   </head>
   <body>
   <div class="container">
     <div class="page-header">
-    <%= render :partial => '/shared/header_links' %>
-    <h2 class="h2"><a href="#">My App</a></h2>
-  </div>
-  	<div class="navbar">
-      <div class="navbar-inner">
-      <ul class="nav nav-pills">
-        <li><%= link_to 'Posts', microposts_path %></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Downloads</a></li>
-      </ul>
-      </div>
+      <%= render :partial => '/shared/header_links' %>
+      <h2 class="h2"><a href="#">My App</a></h2>
     </div>
-    <%= yield %>
+  	<%= render :partial => '/shared/header_nav' if @current_user %>
 
-    <footer>
-        <p>
-          This website is created and maintained by <b>T Ajit</b>.
-        </p>
+  	<div class="text-error"><%= flash[:error] if flash[:error] %></div>
+  	<div class="text-warning"><%= flash[:warning] if flash[:warning] %></div>
+  	<div class="text-info"><%= flash[:info] if flash[:info] %></div>
+  	<div class="text-success"><%= flash[:success] if flash[:success] %></div>
+ 
+        <%= yield %>
+
+    <footer class="navbar">
+      This website is created and maintained by <b>T Ajit</b>.
     </footer>
 
   </div>

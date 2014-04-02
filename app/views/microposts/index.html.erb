@@ -1,21 +1,19 @@
-<div class="row">
-  <b>New Post:</b>
+<div class="container">
   <%= render 'form' %>
-<table class="table">
-  <tr>
-    <th>Content</th>
-    <th>By</th>
-    <th>To</th>
-    <th></th>
-  </tr>
-
-<% @microposts.each do |micropost| %>
-  <tr>
-    <td><%= link_to micropost.content, micropost %></td>
-    <td><%= link_to micropost.user.name, user_path(micropost.user) %></td>
-    <td><%= User.find(micropost.to_user).name %></td>
-    <td><%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<div class="form-actions">
+<div class="btn-toolbar" style="display:none;"><%= button_tag %></div>
+<% if @microposts.empty? %>
+  <div class="text-info">No posts available</div>
+<% else %>
+<% @microposts.each_with_index do |micropost, i| %>
+  <div class="row-fluid">
+    <%#= check_box_tag('ids[]', micropost.id, false, :class => "checkbox", :id => "post_checkbox_#{ i }" ) %>
+    <%= link_to micropost.content, micropost %>
+    By <%= micropost.user.name %>
+    To <%= User.find(micropost.to_user_id).name %>
+    <div class="pull-right"><%= link_to (image_tag "delete_small2.png", :title => "delete"), micropost, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+  </div><br>
 <% end %>
-</table>
+<% end %>
+</div>
 </div>

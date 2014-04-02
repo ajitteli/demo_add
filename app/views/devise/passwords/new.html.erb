@@ -2,13 +2,10 @@
 <h4>Forgot your password?</h4>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
-  <table class="table-stripped">
-  	<tr>
-  	  <td class="span1"><%= f.label :email %></td>
-      <td class="span1"><%= f.email_field :email, autofocus: true %></td></tr>
-      <td class="btn btn-default"><%= f.submit "Send password" %></td>
-    </tr>
-</table>
+    <div class="form-inline">
+      <%= f.email_field :email, autofocus: true, placeholder: "Email Id" %>
+      <%= f.submit "Send password", class: "btn-small" %>
+    </div>
 <% end %>
 <%= render "devise/shared/links" %>
 </div>

@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name
   has_many :microposts
 
-  def self.all_other_users
-  	where('id != ?', current_user.id)
+  def self.all_users
+  	all
   end
 
 end
