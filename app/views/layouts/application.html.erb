@@ -17,12 +17,10 @@
       <h2 class="h2"><a href="#">My App</a></h2>
     </div>
   	<%= render :partial => '/shared/header_nav' if @current_user %>
+    <div class="text-info"><%= render 'layouts/messages' %></div>
 
-  	<div class="text-error"><%= flash[:error] if flash[:error] %></div>
-  	<div class="text-warning"><%= flash[:warning] if flash[:warning] %></div>
-  	<div class="text-info"><%= flash[:info] if flash[:info] %></div>
-  	<div class="text-success"><%= flash[:success] if flash[:success] %></div>
- 
+     <div class="text-error"><%= devise_error_messages! %></div>
+
         <%= yield %>
 
     <footer class="navbar">
